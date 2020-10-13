@@ -28,9 +28,24 @@ class NewsDbProvider {
           //so inside this function we're going to pass in a String that contains sequel code to 
           // creat a new table inside database// so here code is very long we creat multi-line string
           // so for that we use three quots """ """
-        newDb.execute( 
-
-        );
+        newDb.execute("""
+        CREATE TABLE Items
+          (
+            id INTEGER PRIMARY KEY,
+            type TEXT,
+            by TEXT,
+            time INTEGER,
+            text TEXT,
+            parent INTEGER,
+            kids BLOB,
+            dead INTEGER,
+            deleted INTEGER,
+            url TEXT,
+            score INTEGER,
+            title TEXT,
+            descendants INTEGER
+          )
+        """);
                         
       }
     );
