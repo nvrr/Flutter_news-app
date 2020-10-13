@@ -11,6 +11,28 @@ class NewsDbProvider {
   
 
   init() async{
-    
+    Directory documentsDirectory = await getApplicationDocumentsDirectory();// this function is provided to our file through the path provider module right here, 
+          //the path provider module is specially made to work with mobile devices temporary directories or directories on mobile device
+          //so by calling this function ,it returns a reference to folder on our mobile device where we safely somewhat permanently store different files
+          //so this is reference to mobile directory
+          //so we had imported the module dart io so that we could get access to this type of directory
+          //bcz what this function is going to return
+    final path = join(documentsDirectory.path, "items.db");
+    // path variable stores reference to the actual file path where we going to create our database 
+
+    db = await openDatabase(
+      path,
+      version: 1,
+      onCreate: (Database newDb, int version) {
+          //allow us to send a arbitrary snippet of sequel to our database where will be executed
+          //so inside this function we're going to pass in a String that contains sequel code to 
+          // creat a new table inside database// so here code is very long we creat multi-line string
+          // so for that we use three quots """ """
+        newDb.execute( 
+
+        );
+                        
+      }
+    );
   }
 }
