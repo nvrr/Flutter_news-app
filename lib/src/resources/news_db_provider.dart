@@ -67,5 +67,8 @@ class NewsDbProvider {
     return null;
   }
 
+  addItemTODb(ItemModel item) {
+    db.insert("Items", item.toMap());
+  }
 
 }

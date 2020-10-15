@@ -43,6 +43,21 @@ ItemModel.fromDb(Map<String, dynamic> parsedJson)
       descendants = parsedJson['descendants'];
 
 
+Map<String, dynamic> toMap() {
+  return <String, dynamic>{
+    "id": id,
+    "type": type,
+    "by": by,
+    "time": time,
+    "text": text,
+    "parent": parent,
+    "url": url,
+    "title": title,
+    "descendants": descendants,
+    "dead": dead ? 1 : 0,
+    "deleted": deleted ? 1 : 0,
+    "kids": jsonEncode(kids)
+  };
 }
 
 
