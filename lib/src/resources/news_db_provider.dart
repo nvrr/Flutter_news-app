@@ -10,7 +10,7 @@ class NewsDbProvider {
   Database db;  //the Database type coming from sqlite package //db represents connection to the actual database that is stored on our physical device
   
 
-  init() async{
+  void init() async{
     Directory documentsDirectory = await getApplicationDocumentsDirectory();// this function is provided to our file through the path provider module right here, 
           //the path provider module is specially made to work with mobile devices temporary directories or directories on mobile device
           //so by calling this function ,it returns a reference to folder on our mobile device where we safely somewhat permanently store different files
@@ -52,7 +52,7 @@ class NewsDbProvider {
   }
 
 
-  fetchItem(int id) async{
+  Future<ItemModel>fetchItem(int id) async{
     final maps = await db.query(
       "Items",
       columns: null,
@@ -67,8 +67,10 @@ class NewsDbProvider {
     return null;
   }
 
-  addItemToDb(ItemModel item) {
-    db.insert("Items", item.toMap());
+
+   Future<int> addItemToDb(ItemModel item) {
+    return db.insert("Items", item.toMap());
   }
+
 
 }
