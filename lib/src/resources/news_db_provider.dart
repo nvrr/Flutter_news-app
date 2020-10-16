@@ -4,11 +4,15 @@ import 'dart:io';//allow us to work with device file system
 import 'package:path/path.dart';//similar to path_provider ,allow us a little bit more stuff to work around with the underlying file system
 import 'dart:async';
 import '../models/item_model.dart';
+import 'repository.dart';
 
 
-class NewsDbProvider {
+class NewsDbProvider implements Source {
   Database db;  //the Database type coming from sqlite package //db represents connection to the actual database that is stored on our physical device
   
+  Future<List<int>> fetchTopIds() {
+    return null;
+  }
 
   void init() async{
     Directory documentsDirectory = await getApplicationDocumentsDirectory();// this function is provided to our file through the path provider module right here, 
