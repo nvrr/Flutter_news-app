@@ -10,6 +10,14 @@ import 'repository.dart';
 class NewsDbProvider implements Source, Cache {
   Database db;  //the Database type coming from sqlite package //db represents connection to the actual database that is stored on our physical device
   
+  // we create instance for this Newsprovider to use to reference
+  // when we use this NewsProvider we expected to call this init() fuction before we actually make use of the thing 
+  //so right now we r just creating a new instance of DbProvider down at the very bottom of file, we never call init() in it,unfortunatly we can't call here ,
+  //but just as a very easy work around , we can just define our Constructor method inside this NewsDbProvider and Call the init() methode from here. so inside we define Constructor and call init()
+  NewsDbProvider() {
+    init();
+  }
+
   Future<List<int>> fetchTopIds() {
     return null;
   }
@@ -78,5 +86,8 @@ class NewsDbProvider implements Source, Cache {
 
 
 }
+// if we we create two instances like NewsDbProvider() in both sources and caches in Repository.dart file,
+//it creates two connections to database ,sqlite doesnt like it. 
+// so we create intance in here and use newsDbProvider reference in repository file 
 
 final newsDbProvider = NewsDbProvider();
