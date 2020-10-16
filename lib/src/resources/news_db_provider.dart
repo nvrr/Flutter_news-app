@@ -7,7 +7,7 @@ import '../models/item_model.dart';
 import 'repository.dart';
 
 
-class NewsDbProvider implements Source {
+class NewsDbProvider implements Source, Cache {
   Database db;  //the Database type coming from sqlite package //db represents connection to the actual database that is stored on our physical device
   
   Future<List<int>> fetchTopIds() {

@@ -32,5 +32,5 @@ abstract class Source {
 }
 
 abstract class Cache {
-
+  Future<int> addItemToDb(ItemModel item);
 }
