@@ -14,6 +14,15 @@ class StoriesBloc {
     _topIds.sink.add(ids);
   }
 
+  _itemsTransformer() {
+    return ScanStreamTransformer(
+      (Map<int, Future<ItemModel>> cache, int id, _index) {
+
+      },
+      <int, Future<ItemModel>> {},
+    );
+  }
+
   dispose() {
     _topIds.close();
   }
