@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:rxdart/rxdart.dart';
 import '../models/item_model.dart';
 import '../resources/repository.dart';
@@ -5,9 +6,13 @@ import '../resources/repository.dart';
 class StoriesBloc {
   final _repository = Repository();
   final _topIds = PublishSubject<List<int>>();
+  final _items = BehaviorSubject<int>();
 
   // Getters to Streams
   Stream<List<int>> get topIds => _topIds.stream;
+
+  // Getters to Sinks
+  Function(int) get fetchItem => _items.sink.add;
 
   fetchTopIds() async{
     final ids = await _repository.fetchTopIds();
@@ -26,5 +31,6 @@ class StoriesBloc {
 
   dispose() {
     _topIds.close();
+    _items.close();
   }
 }
