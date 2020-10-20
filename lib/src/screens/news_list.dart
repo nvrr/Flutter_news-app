@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../blocs/stories_provider.dart';
+import '../widgets/news_list_tile.dart';
 
 class NewsList extends StatelessWidget {
   @override
@@ -40,10 +41,11 @@ class NewsList extends StatelessWidget {
         return ListView.builder(
           itemCount: snapshot.data.length,
           itemBuilder: (context, int index) {
-            // i dont know ,he dont add it in while lecturing course but suddenly it came in this section/below one line code
             bloc.fetchItem(snapshot.data[index]);
 
-            return Text('${snapshot.data[index]}');
+            return NewsListTile(
+              itemId: snapshot.data[index],
+              );
           }
         );
       }
