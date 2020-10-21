@@ -29,7 +29,7 @@ class NewsDbProvider implements Source, Cache {
           //so this is reference to mobile directory
           //so we had imported the module dart io so that we could get access to this type of directory
           //bcz what this function is going to return
-    final path = join(documentsDirectory.path, "items.db");
+    final path = join(documentsDirectory.path, "items9.db");
     // path variable stores reference to the actual file path where we going to create our database 
 
     db = await openDatabase(
@@ -81,7 +81,16 @@ class NewsDbProvider implements Source, Cache {
 
 
    Future<int> addItemToDb(ItemModel item) {
-    return db.insert("Items", item.toMap());
+    return db.insert(
+      "Items", 
+      item.toMap(),
+      // below code ignores error conficts, here we have error of : we take data from database and save it again,thats the error
+      conflictAlgorithm: ConflictAlgorithm.ignore,
+      );
+  }
+
+  Future<int> clear() {
+    return db.delete("Items");
   }
 
 
