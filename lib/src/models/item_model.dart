@@ -9,7 +9,7 @@ final int time;
 final String text;
 final bool dead;
 final int parent;
-final List<int> kids;
+final List<dynamic> kids;// we got error bfr bcz we give it type int
 final String url;
 final String title;
 final int descendants;
