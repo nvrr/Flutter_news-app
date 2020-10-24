@@ -24,11 +24,11 @@ class App extends StatelessWidget {
         } else {
           return MaterialPageRoute(
             builder: (context) {
-              // extract the item id from settings.name 
-              // and pass into NewsDetail
-              // a fantastic location to do some initialization 
-              // or data fetching fot NewsDetail
-              return NewsDetail();
+              final itemId = int.parse(settings.name.replaceFirst('/', ''));
+
+              return NewsDetail(
+                itemId: itemId,
+              );
             }
           );
         }
