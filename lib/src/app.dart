@@ -11,6 +11,7 @@ class App extends StatelessWidget {
           child: StoriesProvider(
         child: MaterialApp(
           title: 'News!',
+          debugShowCheckedModeBanner: false,
           onGenerateRoute: routes,
         ),
       ),
